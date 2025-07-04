@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahika | The Coven</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      font-family: 'Manufacturing Consent', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .explore-button {
+      display: block;
+      margin: 30px auto 60px;
+      padding: 12px 30px;
+      background: transparent;
+      border: 2px solid #666;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .explore-button:hover {
+      background: #111;
+      border-color: white;
+      text-shadow: 0 0 8px #fff;
+    }
+
+    .members-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .members-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    .member-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    /* Flip Card Styles */
+    .flip-card {
+      background-color: transparent;
+      width: 220px;
+      height: 300px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #444;
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flip-card-front img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .flip-card-front h3,
+    .flip-card-back h3,
+    .flip-card-back p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-bottom: 1px solid transparent;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: white;
+      border-bottom: 1px solid white;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* 🔮 Contact Popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      background: rgba(0, 0, 0, 0.95);
+      padding: 20px 30px;
+      border: 1px solid #666;
+      border-radius: 12px;
+      z-index: 999;
+      text-align: center;
+      box-shadow: 0 0 15px #6440ff;
+      animation: floatIn 0.4s ease;
+    }
+
+    .popup.hidden {
+      display: none;
+    }
+
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .qr-code {
+      width: 150px;
+      height: auto;
+      margin-bottom: 15px;
+      border: 1px solid #888;
+      border-radius: 8px;
+    }
+
+    .fb-link {
+      color: #aabfff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .fb-link:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌑 Banner -->
+  <img src="paper.jpg" alt="Mahika Banner" class="banner" />
+
+  <!-- 🧙‍♀️ Members Section -->
+  <section class="members-section" id="members">
+    <h2>Members</h2>
+    <div class="member-cards">
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="world.jpg" alt="Sol">
+            <h3>Yuru</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Yuru</h3>
+            <p>Magic: Divination</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="star.jpg" alt="Luna">
+            <h3>Ish</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Ish</h3>
+            <p>Magic: Illusions</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="moon.jpg" alt="Nova">
+            <h3>Luu</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Luu</h3>
+            <p>Magic: Shadows</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔮 Explore Button -->
+  <a href="#magic" class="explore-button">Explore the Coven</a>
+
+  <!-- 🌙 Navigation -->
+  <nav>
+    <a href="#">Spellbook</a>
+    <a href="#">Merch</a>
+    <a href="javascript:void(0);" class="contact-link">Contact Us</a>
+    <a href="index.html">Return to Portal</a>
+  </nav>
+
+  <div class="footer">
+    © 2025 Mahika. The coven never sleeps.
+  </div>
+
+  <!-- 🌌 Popup -->
+  <div id="contactPopup" class="popup hidden">
+    <div class="popup-content">
+      <img src="qr.png" alt="QR Code" class="qr-code" />
+      <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank" class="fb-link">Visit us on Facebook</a>
+    </div>
+  </div>
+
+  <!-- ✨ Script -->
+  <script>
+    const contactPopup = document.getElementById('contactPopup');
+    const contactLink = document.querySelector('.contact-link');
+
+    contactLink.addEventListener('click', () => {
+      contactPopup.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
