@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahika</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Manufacturing Consent', monospace;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Background Image */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: url('back.png') no-repeat center center;
+      background-size: cover;
+      z-index: 0;
+    }
+
+    /* Overlay darkness */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    /* Content Container */
+    .container {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* Spinning Logo */
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      animation: spin 6s linear infinite;
+      filter: drop-shadow(0 0 6px #fff);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Mahika Title */
+    .title {
+      font-size: 5rem;
+      opacity: 0;
+      animation: fadeGlow 2.5s ease-in-out forwards;
+      color: white;
+    }
+
+    @keyframes fadeGlow {
+      0% { opacity: 0; }
+      50% { opacity: 1; text-shadow: 0 0 20px #fff, 0 0 40px #e8e8e8; }
+      100% { opacity: 1; text-shadow: none; }
+    }
+
+    /* Subtitle - Baybayin */
+    .subtitle {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    /* Typing effect container */
+    .tagline {
+      font-size: 1.1rem;
+      color: white;
+      margin-top: 20px;
+      display: flex;
+      gap: 0.5px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tag-char {
+      opacity: 0;
+      animation: typeAppear 0.5s forwards;
+    }
+
+    @keyframes typeAppear {
+      0% {
+        opacity: 0;
+        text-shadow:
+          0 0 6px #f8f2fb,
+          0 0 10px #eae8f1,
+          0 0 14px #edd5dd;
+      }
+      100% {
+        opacity: 1;
+        text-shadow: none;
+      }
+    }
+
+    /* Button */
+    .enter-button {
+      margin-top: 40px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      background: transparent;
+      border: 2px solid #999;
+      color: white;
+      cursor: pointer;
+      font-family: 'Manufacturing Consent', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .enter-button:hover {
+      background: #111;
+      border-color: white;
+      text-shadow: 0 0 8px white;
+    }
+
+    /* Fade-out transition */
+    .fade-out {
+      position: fixed;
+      inset: 0;
+      background: black;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+
+    .fade-out.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Layers -->
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <img src="logo.png" alt="Mahika Logo" class="logo" />
+    <div class="title">MahikA</div>
+    <div class="subtitle">ᜋᜑᜒᜃ</div>
+    <div class="tagline" id="tagline"></div>
+    <button class="enter-button" onclick="fadeAndGo()">Enter the Magic</button>
+  </div>
+
+  <!-- Fade Transition -->
+  <div id="fade" class="fade-out"></div>
+
+  <script>
+    const tagline = "The coven awakens, a new era of idols will emerge from the shadows.";
+    const container = document.getElementById("tagline");
+
+    function typeWithGlow(text, delay = 30) {
+      [...text].forEach((char, i) => {
+        const span = document.createElement("span");
+        span.className = "tag-char";
+        span.innerHTML = char === " " ? "&nbsp;" : char;
+        span.style.animationDelay = `${i * delay}ms`;
+        container.appendChild(span);
+      });
+    }
+
+    // Start typing after glow
+    setTimeout(() => {
+      typeWithGlow(tagline, 50);
+    }, 2500);
+
+    function fadeAndGo() {
+      const fade = document.getElementById('fade');
+      fade.classList.add('active');
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
