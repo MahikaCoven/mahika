@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mahika | The Coven</title>
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
 
   <style>
@@ -18,7 +16,8 @@
       background: #000;
       color: white;
       font-family: 'Manufacturing Consent', sans-serif;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+      cursor: none;
     }
 
     .banner {
@@ -62,19 +61,18 @@
       gap: 30px;
     }
 
-    /* Flip Card Styles */
     .flip-card {
       background-color: transparent;
       width: 220px;
       height: 300px;
       perspective: 1000px;
+      position: relative;
     }
 
     .flip-card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      text-align: center;
       transition: transform 0.8s;
       transform-style: preserve-3d;
     }
@@ -90,10 +88,8 @@
       height: 100%;
       border-radius: 12px;
       backface-visibility: hidden;
-      background: rgba(255, 255, 255, 0.05);
       border: 1px solid #444;
       backdrop-filter: blur(5px);
-      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -102,25 +98,42 @@
 
     .flip-card-front img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 15px;
     }
 
-    .flip-card-front h3,
-    .flip-card-back h3,
-    .flip-card-back p {
-      margin: 0;
-      font-size: 1.2rem;
-      color: white;
-    }
-
-    .flip-card-back {
+    .flip-card-back.yuru-back {
+      background: url('backyuru.png') no-repeat center center;
+      background-size: cover;
       transform: rotateY(180deg);
+    }
+
+    .flip-card-back.ish-back {
+      background: url('backish.png') no-repeat center center;
+      background-size: cover;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back.luu-back {
+      background: url('backluu.png') no-repeat center center;
+      background-size: cover;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back p {
+      margin-top: 10px;
+      background: rgba(0,0,0,0.6);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1rem;
     }
 
     nav {
       text-align: center;
       margin-top: 40px;
+      position: relative;
+      z-index: 2;
     }
 
     nav a {
@@ -130,7 +143,6 @@
       font-size: 1.1rem;
       border-bottom: 1px solid transparent;
       transition: 0.2s;
-      cursor: pointer;
     }
 
     nav a:hover {
@@ -143,9 +155,10 @@
       padding: 40px 20px;
       color: #666;
       font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
     }
 
-    /* 🔮 Contact Popup */
     .popup {
       position: fixed;
       top: 50%;
@@ -173,7 +186,6 @@
 
     .qr-code {
       width: 150px;
-      height: auto;
       margin-bottom: 15px;
       border: 1px solid #888;
       border-radius: 8px;
@@ -199,27 +211,54 @@
         transform: translate(-50%, -50%) scale(1);
       }
     }
+
+    .custom-cursor {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      background: url('cursor.png') no-repeat center;
+      background-size: contain;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .mist-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      animation: fadeTrail 1s linear forwards;
+    }
+
+    @keyframes fadeTrail {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- 🌑 Banner -->
+  <div class="custom-cursor" id="cursor"></div>
+
   <img src="paper.jpg" alt="Mahika Banner" class="banner" />
 
-  <!-- 🧙‍♀️ Members Section -->
   <section class="members-section" id="members">
-    <h2>Members</h2>
+    <h2>Meet the Witches</h2>
     <div class="member-cards">
 
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="world.jpg" alt="Sol">
-            <h3>Yuru</h3>
+            <img src="yuru.png" alt="Yuru">
           </div>
-          <div class="flip-card-back">
-            <h3>Yuru</h3>
-            <p>Magic: Divination</p>
+          <div class="flip-card-back yuru-back">
+            <p>The Seer</p>
           </div>
         </div>
       </div>
@@ -227,12 +266,10 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="star.jpg" alt="Luna">
-            <h3>Ish</h3>
+            <img src="ish.png" alt="Ish">
           </div>
-          <div class="flip-card-back">
-            <h3>Ish</h3>
-            <p>Magic: Illusions</p>
+          <div class="flip-card-back ish-back">
+            <p>The Weaver</p>
           </div>
         </div>
       </div>
@@ -240,12 +277,10 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="moon.jpg" alt="Nova">
-            <h3>Luu</h3>
+            <img src="luu.png" alt="Luu">
           </div>
-          <div class="flip-card-back">
-            <h3>Luu</h3>
-            <p>Magic: Shadows</p>
+          <div class="flip-card-back luu-back">
+            <p>The Hollow</p>
           </div>
         </div>
       </div>
@@ -253,22 +288,17 @@
     </div>
   </section>
 
-  <!-- 🔮 Explore Button -->
   <a href="#magic" class="explore-button">Explore the Coven</a>
 
-  <!-- 🌙 Navigation -->
   <nav>
     <a href="#">Spellbook</a>
     <a href="#">Merch</a>
-    <a href="javascript:void(0);" class="contact-link">Contact Us</a>
+    <a href="#" class="contact-link">Contact Us</a>
     <a href="index.html">Return to Portal</a>
   </nav>
 
-  <div class="footer">
-    © 2025 Mahika. The coven never sleeps.
-  </div>
+  <div class="footer">© 2025 Mahika. The coven never sleeps.</div>
 
-  <!-- 🌌 Popup -->
   <div id="contactPopup" class="popup hidden">
     <div class="popup-content">
       <img src="qr.png" alt="QR Code" class="qr-code" />
@@ -276,13 +306,25 @@
     </div>
   </div>
 
-  <!-- ✨ Script -->
   <script>
+    const cursor = document.getElementById('cursor');
     const contactPopup = document.getElementById('contactPopup');
     const contactLink = document.querySelector('.contact-link');
 
-    contactLink.addEventListener('click', () => {
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
       contactPopup.classList.toggle('hidden');
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+      const mist = document.createElement('div');
+      mist.className = 'mist-trail';
+      mist.style.left = `${e.pageX}px`;
+      mist.style.top = `${e.pageY}px`;
+      document.body.appendChild(mist);
+      setTimeout(() => mist.remove(), 1000);
     });
   </script>
 

@@ -20,6 +20,7 @@
       background: black;
       color: white;
       overflow: hidden;
+      cursor: none;
     }
 
     /* Background Image */
@@ -151,9 +152,40 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    .custom-cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      background: url('cursor.png') no-repeat center;
+      background-size: contain;
+      z-index: 9999;
+    }
+
+    .mist-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      animation: fadeTrail 1s linear forwards;
+    }
+
+    @keyframes fadeTrail {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
 
   <!-- Background Layers -->
   <div class="background"></div>
@@ -197,6 +229,20 @@
         window.location.href = 'home.html';
       }, 1000);
     }
+
+    // Custom Cursor + Mist Trail
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.pageX + 'px';
+      cursor.style.top = e.pageY + 'px';
+
+      const mist = document.createElement('div');
+      mist.className = 'mist-trail';
+      mist.style.left = `${e.pageX}px`;
+      mist.style.top = `${e.pageY}px`;
+      document.body.appendChild(mist);
+      setTimeout(() => mist.remove(), 1000);
+    });
   </script>
 
 </body>
