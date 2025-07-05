@@ -22,11 +22,36 @@
 
     .banner {
       width: 100%;
-      max-height: 300px;
+      max-height: 400px;
       object-fit: cover;
+      position: relative;
+      z-index: 1;
     }
 
-    .explore-button {
+    .danglings {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: -15px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dangle {
+      width: 90px;
+      height: auto;
+      animation: sway 2.5s ease-in-out infinite alternate;
+      transform-origin: top center;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    .explore-button {s
       display: block;
       margin: 30px auto 60px;
       padding: 12px 30px;
@@ -246,12 +271,19 @@
 
   <div class="custom-cursor" id="cursor"></div>
 
-  <img src="paper.jpg" alt="Mahika Banner" class="banner" />
+  <img src="window.png" alt="Mahika Banner" class="banner" />
+
+  <div class="danglings">
+    <img src="dragonfly.png" class="dangle">
+    <img src="pent.png" class="dangle">
+    <img src="butter.png" class="dangle">
+    <img src="pent.png" class="dangle">
+    <img src="moth.png" class="dangle">
+  </div>
 
   <section class="members-section" id="members">
     <h2>Meet the Witches</h2>
     <div class="member-cards">
-
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -284,7 +316,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
