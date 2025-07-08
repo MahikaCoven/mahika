@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luu | Mahika</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=MedievalSharp&family=Manufacturing+Consent&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: url('ancient-bg.jpg') #000 no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'MedievalSharp', cursive;
+      overflow-x: hidden;
+    }
+
+    .profile-container {
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+    }
+
+    .magic-circle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: url('magic-circle.png') no-repeat center center;
+      background-size: contain;
+      animation: rotate 10s linear infinite;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    @keyframes rotate {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid purple;
+      margin-bottom: 20px;
+      z-index: 1;
+      position: relative;
+      box-shadow: 0 0 15px purple;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #cfa8ff;
+      margin-bottom: 10px;
+      font-family: 'Manufacturing Consent', serif;
+      text-shadow: 0 0 5px #a355ff;
+    }
+
+    .basic-info, .fun-facts {
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: left;
+      background: rgba(10, 0, 20, 0.7);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #5e3a94;
+      z-index: 1;
+      position: relative;
+      box-shadow: 0 0 10px rgba(130, 90, 180, 0.6);
+    }
+
+    .basic-info p, .fun-facts li {
+      margin: 6px 0;
+    }
+
+    .fun-facts ul {
+      padding-left: 20px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      color: #aabfff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .social-links a:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .return-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: rgba(20, 0, 30, 0.8);
+      border: 1px solid #888;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .return-button:hover {
+      background: #111;
+      border-color: white;
+      color: white;
+    }
+
+    .choice-menu {
+      margin: 30px auto;
+      max-width: 600px;
+      text-align: left;
+      background: rgba(20, 10, 30, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px dashed #8a6dc4;
+      font-family: 'MedievalSharp', cursive;
+    }
+
+    .choice-menu h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #ddaaff;
+    }
+
+    .choice-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .choice-menu li {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .choice-menu li:hover {
+      background: rgba(200, 150, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="magic-circle"></div>
+    <img src="luuprof.jpg" alt="Luu Profile Picture" class="profile-pic" />
+    <h1>Luu</h1>
+
+    <div class="basic-info">
+      <p><strong>Height:</strong> 5'1"</p>
+      <p><strong>Member Color:</strong> Purple 💜</p>
+      <p><strong>Role:</strong> All-rounder, Rapper</p>
+      <p><strong>MBTI:</strong> INFP-T</p>
+      <p><strong>Symbol:</strong> Wand</p>
+      <p><strong>Member Insect:</strong> Moth</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mahika.2025th" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@mahika25th" target="_blank">TikTok</a>
+        <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank">Facebook</a>
+      </div>
+    </div>
+
+    <div class="fun-facts">
+      <ul>
+        <li><strong>Birthday:</strong> May 31st</li>
+        <li><strong>Zodiac Sign:</strong> Gemini (not a red flag i swear ><)</li>
+        <li><strong>Blood Type:</strong> O+ (mosquitos love me)</li>
+        <li><strong>Hometown:</strong> Makati ooh Makatiii</li>
+        <li><strong>Charm Point:</strong> uhmm idk?</li>
+        <li><strong>Favorite Food:</strong> lots food is love</li>
+        <li><strong>Least Favorite Food:</strong> pineapple</li>
+        <li><strong>Hobbies:</strong> Anime, manga/manwha, gaming, cosplay, singing(?), brainrotting</li>
+        <li><strong>Special Skill:</strong> Adaptability!</li>
+        <li><strong>Current Obsession:</strong> ikemen... (ᵢ𝒹ₒₗ ᵦₒᵧₛ)⁠ ugh</li>
+        <li><strong>Music I Always Listen To:</strong> Rock, Metal, Pop</li>
+        <li><strong>Idol I Admire:</strong> Mingi 🐥 (If Irl), also Rei from Enstar (it's a game 😞)</li>
+        <li><strong>My Dream:</strong> WORLD DOMINATION AND BE RICH</li>
+        <li><strong>Message to the Fans:</strong> Hi, hello, konnichiwa, let's be friends idk 🪰</li>
+      </ul>
+    </div>
+
+    <div class="choice-menu">
+      <h3>Choose your fate:</h3>
+      <ul>
+        <li>🎤 Ask Luu to freestyle rap</li>
+        <li>🪄 Request a magical spell (warning: side effects unknown)</li>
+        <li>🎮 Challenge Luu to a gaming duel</li>
+        <li>💌 Send Luu a fan letter</li>
+      </ul>
+    </div>
+
+    <a href="home.html" class="return-button">Return to Coven Main Halls</a>
+  </div>
+</body>
+</html>

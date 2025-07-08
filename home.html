@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="m.ico" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mahika | The Coven</title>
   <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
-
   <style>
+    .spell-section {
+      text-align: center;
+      margin: 50px 20px;
+    }
+
+    .image-btn {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .image-btn img {
+      width: 160px;
+      height: auto;
+      transition: transform 0.3s, filter 0.3s;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    }
+
+    .image-btn img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 12px #aabfff);
+    }
+
+    .spell-output {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #aabfff;
+      min-height: 40px;
+      transition: 0.3s;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -20,78 +53,85 @@
       cursor: none;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .banner {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
-      position: relative;
       z-index: 1;
+      position: relative;
     }
 
     .danglings {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 30px;
-      margin-top: -15px;
+      margin-top: -1px;
       margin-bottom: 40px;
       position: relative;
       z-index: 2;
     }
 
     .dangle {
-      width: 90px;
-      height: auto;
-      animation: sway 2.5s ease-in-out infinite alternate;
+      width: 60px;
+      animation: sway 2.8s ease-in-out infinite alternate;
       transform-origin: top center;
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
     }
 
     @keyframes sway {
-      0% { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
-    }
-
-    .explore-button {s
-      display: block;
-      margin: 30px auto 60px;
-      padding: 12px 30px;
-      background: transparent;
-      border: 2px solid #666;
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-
-    .explore-button:hover {
-      background: #111;
-      border-color: white;
-      text-shadow: 0 0 8px #fff;
+      0% { transform: rotate(-4deg); }
+      100% { transform: rotate(4deg); }
     }
 
     .members-section {
-      padding: 60px 20px;
+      padding: 50px 20px;
       text-align: center;
     }
 
     .members-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
     }
 
     .member-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
     }
 
     .flip-card {
-      background-color: transparent;
-      width: 220px;
-      height: 300px;
+      width: 200px;
+      height: 280px;
       perspective: 1000px;
+      cursor: pointer;
       position: relative;
+    }
+
+    .flip-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 240px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      animation: aura 2.5s ease-in-out infinite;
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes aura {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.6; }
     }
 
     .flip-card-inner {
@@ -100,6 +140,7 @@
       height: 100%;
       transition: transform 0.8s;
       transform-style: preserve-3d;
+      z-index: 1;
     }
 
     .flip-card:hover .flip-card-inner {
@@ -116,56 +157,65 @@
       border: 1px solid #444;
       backdrop-filter: blur(5px);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     .flip-card-front img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 8px;
     }
 
-    .flip-card-back.yuru-back {
-      background: url('backyuru.png') no-repeat center center;
-      background-size: cover;
+    .flip-card-back {
       transform: rotateY(180deg);
+      color: white;
+      background-size: cover;
+      background-position: center;
     }
 
-    .flip-card-back.ish-back {
-      background: url('backish.png') no-repeat center center;
-      background-size: cover;
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-back.luu-back {
-      background: url('backluu.png') no-repeat center center;
-      background-size: cover;
-      transform: rotateY(180deg);
-    }
+    .yuru-back { background-image: url('backyuru.png'); }
+    .ish-back { background-image: url('backish.png'); }
+    .luu-back { background-image: url('backluu.png'); }
 
     .flip-card-back p {
-      margin-top: 10px;
       background: rgba(0,0,0,0.6);
       padding: 6px 12px;
       border-radius: 8px;
-      font-size: 1rem;
+    }
+
+    .flip-card a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .burning {
+      animation: burn 1.5s forwards;
+      pointer-events: none;
+    }
+
+    @keyframes burn {
+      0% { opacity: 1; transform: scale(1) rotate(0deg); filter: brightness(1); }
+      50% { filter: brightness(2) sepia(1); transform: scale(1.05) rotate(3deg); }
+      100% { opacity: 0; transform: scale(1.2) rotate(-15deg); filter: brightness(0.3) sepia(1); }
     }
 
     nav {
       text-align: center;
-      margin-top: 40px;
-      position: relative;
+      margin: 40px 0;
       z-index: 2;
+      position: relative;
     }
 
     nav a {
-      margin: 0 12px;
+      margin: 0 10px;
       color: #ccc;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1rem;
       border-bottom: 1px solid transparent;
       transition: 0.2s;
     }
@@ -175,26 +225,31 @@
       border-bottom: 1px solid white;
     }
 
+    .fixed-bottom {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+
     .footer {
       text-align: center;
       padding: 40px 20px;
       color: #666;
       font-size: 0.9rem;
-      position: relative;
-      z-index: 2;
     }
 
     .popup {
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.95);
       padding: 20px 30px;
       border: 1px solid #666;
       border-radius: 12px;
       z-index: 999;
-      text-align: center;
       box-shadow: 0 0 15px #6440ff;
       animation: floatIn 0.4s ease;
     }
@@ -207,13 +262,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .qr-code {
-      width: 150px;
-      margin-bottom: 15px;
-      border: 1px solid #888;
-      border-radius: 8px;
+      gap: 10px;
     }
 
     .fb-link {
@@ -225,139 +274,100 @@
     .fb-link:hover {
       text-shadow: 0 0 6px #fff;
     }
-
-    @keyframes floatIn {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, -60%) scale(0.9);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    .custom-cursor {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      pointer-events: none;
-      background: url('cursor.png') no-repeat center;
-      background-size: contain;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-
-    .mist-trail {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      animation: fadeTrail 1s linear forwards;
-    }
-
-    @keyframes fadeTrail {
-      to {
-        opacity: 0;
-        transform: scale(2);
-      }
-    }
   </style>
 </head>
 <body>
-
-  <div class="custom-cursor" id="cursor"></div>
-
-  <img src="window.png" alt="Mahika Banner" class="banner" />
-
-  <div class="danglings">
-    <img src="dragonfly.png" class="dangle">
-    <img src="pent.png" class="dangle">
-    <img src="butter.png" class="dangle">
-    <img src="pent.png" class="dangle">
-    <img src="moth.png" class="dangle">
+  <div class="banner">
+    <img src="window.png" alt="Banner" class="banner">
   </div>
 
-  <section class="members-section" id="members">
+  <div class="danglings">
+    <img src="d.png" class="dangle" alt="pentagram">
+    <img src="b.png" class="dangle" alt="moon">
+    <img src="m.png" class="dangle" alt="rune">
+  </div>
+
+  <section class="members-section">
     <h2>Meet the Witches</h2>
     <div class="member-cards">
-      <div class="flip-card">
+      <div class="flip-card" onclick="handleCardClick('yuru.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="yuru.png" alt="Yuru">
-          </div>
-          <div class="flip-card-back yuru-back">
-            <p>The Seer</p>
-          </div>
+          <div class="flip-card-front"><img src="yuru.png" alt="Yuru"></div>
+          <div class="flip-card-back yuru-back"><p>The Seer</p></div>
         </div>
       </div>
-
-      <div class="flip-card">
+      <div class="flip-card" onclick="handleCardClick('ish.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="ish.png" alt="Ish">
-          </div>
-          <div class="flip-card-back ish-back">
-            <p>The Weaver</p>
-          </div>
+          <div class="flip-card-front"><img src="ish.png" alt="Ish"></div>
+          <div class="flip-card-back ish-back"><p>The Weaver</p></div>
         </div>
       </div>
-
-      <div class="flip-card">
+      <div class="flip-card" onclick="handleCardClick('luu.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="luu.png" alt="Luu">
-          </div>
-          <div class="flip-card-back luu-back">
-            <p>The Hollow</p>
-          </div>
+          <div class="flip-card-front"><img src="luu.png" alt="Luu"></div>
+          <div class="flip-card-back luu-back"><p>The Hollow</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <a href="#magic" class="explore-button">Explore the Coven</a>
+  <div class="spell-section">
+    <button class="image-btn"><img src="cast-button.png" alt="Cast a Spell" /></button>
+    <p class="spell-output">✨ A prophecy shall appear here... ✨</p>
+  </div>
 
-  <nav>
+  <div class="fixed-bottom">
+    <a href="index.html"><img src="return-button.png" alt="Return to Portal" /></a>
+  </div>
+   <div style="text-align:center; margin-bottom: 60px;">
+    <a href="#magic" class="image-btn"><img src="covenbutton.png" alt="Explore the Coven"></a>
+  </div>
+<nav>
+    <a href="#">About</a>
+    <a href="#">Discography</a>
     <a href="#">Spellbook</a>
     <a href="#">Merch</a>
     <a href="#" class="contact-link">Contact Us</a>
-    <a href="index.html">Return to Portal</a>
   </nav>
+
+  <div class="fixed-bottom">
+    <a href="index.html">Return to Portal</a>
+  </div>
 
   <div class="footer">© 2025 Mahika. The coven never sleeps.</div>
 
   <div id="contactPopup" class="popup hidden">
     <div class="popup-content">
-      <img src="qr.png" alt="QR Code" class="qr-code" />
-      <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank" class="fb-link">Visit us on Facebook</a>
+      <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank" class="fb-link">Facebook</a>
+      <a href="https://www.tiktok.com/@mahika25th" target="_blank" class="fb-link">TikTok</a>
+      <a href="https://www.instagram.com/mahika.2025th" target="_blank" class="fb-link">Instagram</a>
     </div>
   </div>
-
   <script>
-    const cursor = document.getElementById('cursor');
-    const contactPopup = document.getElementById('contactPopup');
-    const contactLink = document.querySelector('.contact-link');
+    const spells = [
+      "By starlight and shadow, your wish shall awaken.",
+      "From whispers of fate, a new path is revealed.",
+      "The moon knows secrets the sun has yet to learn.",
+      "In chaos, there is clarity — just listen.",
+      "One spark of magic changes all.",
+      "Speak your truth and the veil shall lift.",
+      "Beware the quiet, for it holds the loudest power.",
+      "What is lost may yet return, reborn in stardust.",
+      "The coven watches, the stars conspire.",
+      "May your soul burn brighter than the void."
+    ];
 
-    contactLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      contactPopup.classList.toggle('hidden');
+    document.querySelector('.image-btn').addEventListener('click', () => {
+      const randomSpell = spells[Math.floor(Math.random() * spells.length)];
+      document.querySelector('.spell-output').textContent = `✨ ${randomSpell} ✨`;
     });
 
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-
-      const mist = document.createElement('div');
-      mist.className = 'mist-trail';
-      mist.style.left = `${e.pageX}px`;
-      mist.style.top = `${e.pageY}px`;
-      document.body.appendChild(mist);
-      setTimeout(() => mist.remove(), 1000);
-    });
+    function handleCardClick(link, element) {
+      element.classList.add('burning');
+      setTimeout(() => {
+        window.location.href = link;
+      }, 1500);
+    }
   </script>
-
 </body>
 </html>
