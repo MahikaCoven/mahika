@@ -91,6 +91,26 @@
       100% { transform: rotate(4deg); }
     }
 
+    .pentagram {
+      position: fixed;
+      width: 80px;
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pentagram.p1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .pentagram.p2 { top: 30%; right: 15%; animation-delay: 2s; }
+    .pentagram.p3 { bottom: 20%; left: 5%; animation-delay: 1s; }
+    .pentagram.p4 { bottom: 15%; right: 10%; animation-delay: 3s; }
+    .pentagram.p5 { top: 50%; left: 50%; animation-delay: 4s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(10deg); }
+    }
+
     .members-section {
       padding: 50px 20px;
       text-align: center;
@@ -303,9 +323,6 @@
   </style>
 </head>
 <body>
-  <img src="vinel.png" alt="Left Border" class="side-border left-border">
-  <img src="viner.png" alt="Right Border" class="side-border right-border">
-
   <div class="banner">
     <img src="window.png" alt="Banner" class="banner">
   </div>
@@ -315,6 +332,13 @@
     <img src="b.png" class="dangle" alt="moon">
     <img src="m.png" class="dangle" alt="rune">
   </div>
+
+   <!-- ✨ Floating pentagrams -->
+  <img src="star.png" class="pentagram p1" alt="">
+  <img src="star.png" class="pentagram p2" alt="">
+  <img src="star.png" class="pentagram p3" alt="">
+  <img src="star.png" class="pentagram p4" alt="">
+  <img src="star.png" class="pentagram p5" alt="">
 
   <section class="members-section">
     <h2>Meet the Witches</h2>
@@ -358,6 +382,9 @@
     <img src="portal.png" alt="Return to Portal" class="portal-img" />
   </a>
   <p>© 2025 Mahika. The coven never sleeps.</p>
+
+  <img src="vinel.png" alt="Left Border" class="side-border left-border">
+  <img src="viner.png" alt="Right Border" class="side-border right-border">
 </div>
 
 

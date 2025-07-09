@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ish | Mahika</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=MedievalSharp&family=Manufacturing+Consent&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      font-family: 'MedievalSharp', cursive;
+      overflow-x: hidden;
+    }
+
+    .profile-container {
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pentagram {
+      position: fixed;
+      width: 80px;
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pentagram.p1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .pentagram.p2 { top: 30%; right: 15%; animation-delay: 2s; }
+    .pentagram.p3 { bottom: 20%; left: 5%; animation-delay: 1s; }
+    .pentagram.p4 { bottom: 15%; right: 10%; animation-delay: 3s; }
+    .pentagram.p5 { top: 50%; left: 50%; animation-delay: 4s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    .magic-circle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: url('magic-circle.png') no-repeat center center;
+      background-size: contain;
+      animation: spin 10s linear infinite;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .profile-frame {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 20px;
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pfp-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(173, 127, 255, 0.5));
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #8d0b0f;
+      margin-bottom: 10px;
+      font-family: 'Manufacturing Consent', serif;
+      text-shadow: 0 0 5px #b41c4a;
+    }
+
+    .section {
+      margin: 40px auto;
+      width: 100%;
+      max-width: 900px;
+      padding: 60px 20px;
+      border-radius: 16px;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      color: #fff;
+    }
+
+    .basic-info {
+      background-image: url('mb2.png');
+      background-size: 300px 300px;
+    }
+
+    .info-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+    }
+
+    .info-wrap p {
+      margin: 0;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .fun-facts {
+      background-image: url('bgb.png');
+       background-size: 550px 630px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 200px 20px; 
+    }
+
+    .fun-facts ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .fun-facts li {
+      margin: 8px 0;
+    }
+
+    .choice-menu {
+      background-image: url('mb2.png');
+      background-size: 550px 350px;
+    }
+
+    .choice-menu h3 {
+      color: #600a0b;
+      margin-bottom: 10px;
+    }
+
+    .choice-menu ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choice-menu li {
+  width: 80%; 
+  max-width: 500px; 
+}
+
+
+    .choice-menu li:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .social-links {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-links a img {
+      width: 30px;
+      height: 30px;
+      margin: 0 8px;
+      filter: drop-shadow(0 0 3px #fff5);
+      transition: transform 0.3s;
+    }
+
+    .social-links a img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 5px #fff);
+    }
+
+    .return-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: rgba(20, 0, 30, 0.8);
+      border: 1px solid #888;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .return-button:hover {
+      background: #111;
+      border-color: white;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✨ Floating pentagrams -->
+  <img src="pentagram.png" class="pentagram p1" alt="">
+  <img src="pentagram.png" class="pentagram p2" alt="">
+  <img src="pentagram.png" class="pentagram p3" alt="">
+  <img src="pentagram.png" class="pentagram p4" alt="">
+  <img src="pentagram.png" class="pentagram p5" alt="">
+
+  <div class="profile-container">
+    <div class="magic-circle"></div>
+
+    <div class="profile-frame">
+      <img src="ishpfp.jpg" alt="Luu Profile Picture" class="profile-pic" />
+      <img src="border.png" alt="Frame" class="pfp-border" />
+    </div>
+
+    <h1>Ish</h1>
+
+    <div class="section basic-info">
+      <div class="info-wrap">
+        <p><strong>Member Color:</strong> Red ❤️</p>
+        <p><strong>Role:</strong> Main Visuals, Main Dancer </p>
+        <p><strong>Birthday:</strong> November 12th </p>
+        <p><strong>Member Insect:</strong> Butterrfly </p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mahika.2025th" target="_blank"><img src="instagram.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@mahika25th" target="_blank"><img src="tiktok.png" alt="TikTok" /></a>
+        <a href="https://web.facebook.com/mahikaish" target="_blank"><img src="facebook.png" alt="Facebook" /></a>
+      </div>
+    </div>
+
+    <div class="section fun-facts">
+      <ul>
+        <li><strong>Height:</strong> TBD</li>
+        <li><strong>MBTI:</strong> TBD</li>
+        <li><strong>Zodiac Sign:</strong> Virgo ♍</li>
+        <li><strong>Blood Type:</strong> TBD</li>
+        <li><strong>Favorite Food:</strong> TBD</li>
+        <li><strong>Least Favorite Food:</strong> TBD</li>
+        <li><strong>Hobbies:</strong> TBD</li>
+        <li><strong>Special Skill:</strong> TBD</li>
+        <li><strong>Current Obsession:</strong> TBD</li>
+        <li><strong>Music I Always Listen To:</strong> J-Pop/li>
+        <li><strong>Idol I Admire:</strong> TBD</li>
+        <li><strong>My Dream:</strong> TBD</li>
+        <li><strong>Message to the Fans:</strong>TBD</li>
+      </ul>
+    </div>
+
+    <div class="section choice-menu">
+      <h3>Choose your fate:</h3>
+      <ul>
+        <li>👸 Ask Ish for a fashion showdown</li>
+        <li>🧿 Request a luck charm</li>
+        <li>💃 Challenge Ish for a dance battle</li>
+        <li>💌 Send Ish a fan letter</li>
+      </ul>
+    </div>
+
+    <a href="home.html" class="return-button">Return to Coven Main Halls</a>
+  </div>
+</body>
+</html>

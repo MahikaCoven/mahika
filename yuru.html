@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luu | Mahika</title>
+  <title>Yuru | Mahika</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=MedievalSharp&family=Manufacturing+Consent&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      background: url('ancient-bg.jpg') #000 no-repeat center center fixed;
-      background-size: cover;
+      background: #000;
       color: white;
       font-family: 'MedievalSharp', cursive;
       overflow-x: hidden;
@@ -19,6 +18,27 @@
       text-align: center;
       padding: 50px 20px;
       position: relative;
+      z-index: 1;
+    }
+
+    .pentagram {
+      position: fixed;
+      width: 80px;
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pentagram.p1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .pentagram.p2 { top: 30%; right: 15%; animation-delay: 2s; }
+    .pentagram.p3 { bottom: 20%; left: 5%; animation-delay: 1s; }
+    .pentagram.p4 { bottom: 15%; right: 10%; animation-delay: 3s; }
+    .pentagram.p5 { top: 50%; left: 50%; animation-delay: 4s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(10deg); }
     }
 
     .magic-circle {
@@ -30,71 +50,151 @@
       height: 300px;
       background: url('magic-circle.png') no-repeat center center;
       background-size: contain;
-      animation: rotate 10s linear infinite;
-      opacity: 0.15;
+      animation: spin 10s linear infinite;
+      opacity: 0.1;
       z-index: 0;
     }
 
-    @keyframes rotate {
+    @keyframes spin {
       from { transform: translateX(-50%) rotate(0deg); }
       to { transform: translateX(-50%) rotate(360deg); }
     }
 
+    .profile-frame {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 20px;
+    }
+
     .profile-pic {
-      width: 180px;
-      height: 180px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid purple;
-      margin-bottom: 20px;
-      z-index: 1;
+      display: block;
       position: relative;
-      box-shadow: 0 0 15px purple;
+      z-index: 1;
+    }
+
+    .pfp-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(173, 127, 255, 0.5));
     }
 
     h1 {
       font-size: 3rem;
-      color: #cfa8ff;
+      color: #1833aa;
       margin-bottom: 10px;
       font-family: 'Manufacturing Consent', serif;
-      text-shadow: 0 0 5px #a355ff;
+      text-shadow: 0 0 5px #1e208e;
     }
 
-    .basic-info, .fun-facts {
-      margin: 20px auto;
-      max-width: 600px;
-      text-align: left;
-      background: rgba(10, 0, 20, 0.7);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #5e3a94;
-      z-index: 1;
+    .section {
+      margin: 40px auto;
+      width: 100%;
+      max-width: 900px;
+      padding: 60px 20px;
+      border-radius: 16px;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      text-align: center;
       position: relative;
-      box-shadow: 0 0 10px rgba(130, 90, 180, 0.6);
+      z-index: 1;
+      color: #fff;
     }
 
-    .basic-info p, .fun-facts li {
-      margin: 6px 0;
+    .basic-info {
+      background-image: url('mb2.png');
+      background-size: 300px 300px;
     }
 
-    .fun-facts ul {
-      padding-left: 20px;
+    .info-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
     }
 
-    .social-links {
-      margin-top: 10px;
+    .info-wrap p {
+      margin: 0;
+      line-height: 1.5;
       text-align: center;
     }
 
-    .social-links a {
-      margin: 0 8px;
-      color: #aabfff;
-      text-decoration: none;
-      font-size: 1.1rem;
+    .fun-facts {
+      background-image: url('bgd.png');
+       background-size: 550px 630px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 200px 20px; 
     }
 
-    .social-links a:hover {
-      text-shadow: 0 0 6px #fff;
+    .fun-facts ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .fun-facts li {
+      margin: 8px 0;
+    }
+
+    .choice-menu {
+      background-image: url('mb2.png');
+      background-size: 550px 350px;
+    }
+
+    .choice-menu h3 {
+      color: #140a60;
+      margin-bottom: 10px;
+    }
+
+    .choice-menu ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choice-menu li {
+  width: 80%; 
+  max-width: 500px; 
+}
+
+
+    .choice-menu li:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .social-links {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-links a img {
+      width: 30px;
+      height: 30px;
+      margin: 0 8px;
+      filter: drop-shadow(0 0 3px #fff5);
+      transition: transform 0.3s;
+    }
+
+    .social-links a img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 5px #fff);
     }
 
     .return-button {
@@ -114,89 +214,66 @@
       border-color: white;
       color: white;
     }
-
-    .choice-menu {
-      margin: 30px auto;
-      max-width: 600px;
-      text-align: left;
-      background: rgba(20, 10, 30, 0.6);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px dashed #8a6dc4;
-      font-family: 'MedievalSharp', cursive;
-    }
-
-    .choice-menu h3 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #ddaaff;
-    }
-
-    .choice-menu ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .choice-menu li {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px;
-      margin-bottom: 8px;
-      border-radius: 8px;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-
-    .choice-menu li:hover {
-      background: rgba(200, 150, 255, 0.2);
-    }
   </style>
 </head>
 <body>
+
+  <!-- ✨ Floating pentagrams -->
+  <img src="pentagram.png" class="pentagram p1" alt="">
+  <img src="pentagram.png" class="pentagram p2" alt="">
+  <img src="pentagram.png" class="pentagram p3" alt="">
+  <img src="pentagram.png" class="pentagram p4" alt="">
+  <img src="pentagram.png" class="pentagram p5" alt="">
+
   <div class="profile-container">
     <div class="magic-circle"></div>
-    <img src="luuprof.jpg" alt="Luu Profile Picture" class="profile-pic" />
-    <h1>Luu</h1>
 
-    <div class="basic-info">
-      <p><strong>Height:</strong> 5'1"</p>
-      <p><strong>Member Color:</strong> Purple 💜</p>
-      <p><strong>Role:</strong> All-rounder, Rapper</p>
-      <p><strong>MBTI:</strong> INFP-T</p>
-      <p><strong>Symbol:</strong> Wand</p>
-      <p><strong>Member Insect:</strong> Moth</p>
+    <div class="profile-frame">
+      <img src="yurupfp.jpg" alt="Yuru Profile Picture" class="profile-pic" />
+      <img src="border.png" alt="Frame" class="pfp-border" />
+    </div>
+
+    <h1>Yuru</h1>
+
+    <div class="section basic-info">
+      <div class="info-wrap">
+        <p><strong>Member Color:</strong> Blue 💙</p>
+        <p><strong>Role:</strong> Leader, Main Vocalist</p>
+        <p><strong>Birthday:</strong> September 20th </p>
+        <p><strong>Member Insect:</strong> Dragonfly</p>
+      </div>
       <div class="social-links">
-        <a href="https://www.instagram.com/mahika.2025th" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@mahika25th" target="_blank">TikTok</a>
-        <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/mahika.2025th" target="_blank"><img src="instagram.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@mahika25th" target="_blank"><img src="tiktok.png" alt="TikTok" /></a>
+        <a href="https://web.facebook.com/mahikayuru" target="_blank"><img src="facebook.png" alt="Facebook" /></a>
       </div>
     </div>
 
-    <div class="fun-facts">
+    <div class="section fun-facts">
       <ul>
-        <li><strong>Birthday:</strong> May 31st</li>
-        <li><strong>Zodiac Sign:</strong> Gemini (not a red flag i swear ><)</li>
-        <li><strong>Blood Type:</strong> O+ (mosquitos love me)</li>
-        <li><strong>Hometown:</strong> Makati ooh Makatiii</li>
-        <li><strong>Charm Point:</strong> uhmm idk?</li>
-        <li><strong>Favorite Food:</strong> lots food is love</li>
-        <li><strong>Least Favorite Food:</strong> pineapple</li>
-        <li><strong>Hobbies:</strong> Anime, manga/manwha, gaming, cosplay, singing(?), brainrotting</li>
-        <li><strong>Special Skill:</strong> Adaptability!</li>
-        <li><strong>Current Obsession:</strong> ikemen... ƚa⁠(˘⌑˘)⁠ʃ</li>
-        <li><strong>Music I Always Listen To:</strong> Rock, Metal, J-pop</li>
-        <li><strong>Idol I Admire:</strong> Mingi 🐥 (If Irl), also Rei from Enstar (it's a game 😞)</li>
-        <li><strong>My Dream:</strong> WORLD DOMINATION AND BE RICH</li>
-        <li><strong>Message to the Fans:</strong> Hi, hello, konnichiwa, let's be friends idk 🪰</li>
+        <li><strong>Height:</strong> TBD</li>
+        <li><strong>MBTI:</strong> TBD</li>
+        <li><strong>Zodiac Sign:</strong> Virgo ♍</li>
+        <li><strong>Blood Type:</strong> TBD</li>
+        <li><strong>Favorite Food:</strong> TBD</li>
+        <li><strong>Least Favorite Food:</strong> TBD</li>
+        <li><strong>Hobbies:</strong> TBD</li>
+        <li><strong>Special Skill:</strong> TBD</li>
+        <li><strong>Current Obsession:</strong> TBD</li>
+        <li><strong>Music I Always Listen To:</strong> J-Pop/li>
+        <li><strong>Idol I Admire:</strong> TBD</li>
+        <li><strong>My Dream:</strong> TBD</li>
+        <li><strong>Message to the Fans:</strong>TBD</li>
       </ul>
     </div>
 
-    <div class="choice-menu">
+    <div class="section choice-menu">
       <h3>Choose your fate:</h3>
       <ul>
-        <li>🎤 Ask Luu to freestyle rap</li>
-        <li>🪄 Request a magical spell (warning: side effects unknown)</li>
-        <li>🎮 Challenge Luu to a gaming duel</li>
-        <li>💌 Send Luu a fan letter</li>
+        <li>👗 Ask Yuru to design an outfit</li>
+        <li>🔮 Request a fortune reading</li>
+        <li>🪭 Challenge for a fangirl battle</li>
+        <li>💌 Send Yuru a fan letter</li>
       </ul>
     </div>
 
