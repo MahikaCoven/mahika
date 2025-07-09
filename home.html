@@ -58,6 +58,7 @@
       height: auto;
       display: block;
     }
+    
 
     .banner {
       width: 100%;
@@ -221,16 +222,8 @@
     }
 
     nav a:hover {
-      color: white;
+      color: rgb(161, 43, 129);
       border-bottom: 1px solid white;
-    }
-
-    .fixed-bottom {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
     }
 
     .footer {
@@ -274,9 +267,45 @@
     .fb-link:hover {
       text-shadow: 0 0 6px #fff;
     }
+
+    /* ✅ Portal fixed bottom middle */
+    .portal-img {
+  width: 80px;
+  height: auto;
+  margin: 40px auto 0;
+  display: block;
+  filter: drop-shadow(0 0 6px #a02ab5);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.portal-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px #3b0325) brightness(1.2);
+}
+
+.side-border {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.left-border {
+  left: 0;
+}
+
+.right-border {
+  right: 0;
+}
+
   </style>
 </head>
 <body>
+  <img src="vinel.png" alt="Left Border" class="side-border left-border">
+  <img src="viner.png" alt="Right Border" class="side-border right-border">
+
   <div class="banner">
     <img src="window.png" alt="Banner" class="banner">
   </div>
@@ -312,29 +341,25 @@
   </section>
 
   <div class="spell-section">
-    <button class="image-btn"><img src="cast-button.png" alt="Cast a Spell" /></button>
-    <p class="spell-output">✨ A prophecy shall appear here... ✨</p>
+    <button class="image-btn"><img src="fate.png" alt="Cast a Spell" /></button>
+    <p class="spell-output">🕯️ Touch the crytal ball of fate... 🕯️</p>
   </div>
 
-  <div class="fixed-bottom">
-    <a href="index.html"><img src="return-button.png" alt="Return to Portal" /></a>
-  </div>
-   <div style="text-align:center; margin-bottom: 60px;">
-    <a href="#magic" class="image-btn"><img src="covenbutton.png" alt="Explore the Coven"></a>
-  </div>
-<nav>
-    <a href="#">About</a>
+  <nav>
+    <a href="about.html">About</a>
     <a href="#">Discography</a>
-    <a href="#">Spellbook</a>
     <a href="#">Merch</a>
-    <a href="#" class="contact-link">Contact Us</a>
+    <a href="#">Spellbook</a>
+    <a href="#" onclick="showContact()">Contact Us</a>
   </nav>
 
-  <div class="fixed-bottom">
-    <a href="index.html">Return to Portal</a>
-  </div>
+<div class="footer">
+  <a href="index.html">
+    <img src="portal.png" alt="Return to Portal" class="portal-img" />
+  </a>
+  <p>© 2025 Mahika. The coven never sleeps.</p>
+</div>
 
-  <div class="footer">© 2025 Mahika. The coven never sleeps.</div>
 
   <div id="contactPopup" class="popup hidden">
     <div class="popup-content">
@@ -343,7 +368,13 @@
       <a href="https://www.instagram.com/mahika.2025th" target="_blank" class="fb-link">Instagram</a>
     </div>
   </div>
+
   <script>
+    // Redirect to index.html on refresh
+if (performance.navigation.type === 1) {
+  window.location.href = "index.html";
+}
+
     const spells = [
       "By starlight and shadow, your wish shall awaken.",
       "From whispers of fate, a new path is revealed.",
@@ -367,6 +398,10 @@
       setTimeout(() => {
         window.location.href = link;
       }, 1500);
+    }
+
+    function showContact() {
+      document.getElementById("contactPopup").classList.remove("hidden");
     }
   </script>
 </body>
