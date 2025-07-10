@@ -33,6 +33,7 @@ This project is entirely fan-powered by one unstoppable multitalented chaos witc
 - ✨ JavaScript (for transitions + interactivity)
 - ☕ Sleep-deprived energy
 - 🎤 Idol boys whispering in my ears
+- 🎲 Gacha addiction
 
 ---
 
