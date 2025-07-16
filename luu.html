@@ -161,27 +161,48 @@
     }
 
     .basic-info {
-      background-image: url('bgv2.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  background-image: url('bgv2.png');
+  background-size: 40% 130%;
+  background-position: center;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+.info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.info-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
 
-    .info-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      margin-top: 20px;
-    }
-
+.info-wrap p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  text-align: center;
+}
     .fun-facts {
-      background-image: url('luubg.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      padding: 150px 10px;
-    }
-
+  background-image: url('luubg.png');
+  background-size: 620px 630px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 150px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
     .fun-facts ul {
       list-style: none;
       padding: 0;
@@ -196,14 +217,13 @@
 
     .choice-menu {
       background-image: url('quests.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+      background-size: 520px 280px;
     }
 
     .choice-menu h3 {
-      color: #38035b;
+      color: #470a6f;
       margin-bottom: 10px;
+      text-shadow: 0 0 5px #070707;
     }
 
     .choice-menu ul {
@@ -212,20 +232,20 @@
       flex-direction: column;
       align-items: center;
     }
-
     .choice-menu li {
       width: 80%;
       max-width: 500px;
     }
-
     .choice-menu li:hover {
       background: rgba(255, 255, 255, 0.15);
     }
-
     .social-links {
-      margin-top: 20px;
-    }
-
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
     .social-links a img {
       width: 30px;
       height: 30px;
@@ -256,28 +276,71 @@
       border-color: white;
       color: white;
     }
-
-    @media (max-width: 768px) {
-      .basic-info {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-
-      .fun-facts {
-        background-size: contain;
-        background-position: center top;
-        padding: 60px 10px;
-      }
-
-      .choice-menu {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-    }
   </style>
 </head>
 <body>
+  <div class="background"></div>
+  <img src="pentagram.png" class="pentagram p1" alt="">
+  <img src="pentagram.png" class="pentagram p2" alt="">
+  <img src="pentagram.png" class="pentagram p3" alt="">
+  <img src="pentagram.png" class="pentagram p4" alt="">
+  <img src="pentagram.png" class="pentagram p5" alt="">
+  <div class="corner-dangle">
+    <div class="dangle-swing">
+      <img src="lvo.png" alt="dangle" />
+    </div>
+  </div>
+  <div class="profile-container">
+    <div class="magic-circle"></div>
+    <div class="profile-frame">
+      <img src="luupfp.jpg" alt="Luu Profile Picture" class="profile-pic" />
+      <img src="pfpb.png" alt="Frame" class="pfp-border" />
+    </div>
+    <h1>Luu</h1>
+    <div class="section basic-info">
+  <div class="info-box">
+    <div class="info-wrap">
+      <p><strong>Member Color:</strong> Purple 💜</p>
+      <p><strong>Role:</strong> All-rounder, Rapper</p>
+      <p><strong>Birthday:</strong> May 31st</p>
+      <p><strong>Member Insect:</strong> Moth</p>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/mahika.2025th" target="_blank"><img src="instagram.png" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@mahikaluu" target="_blank"><img src="tiktok.png" alt="TikTok" /></a>
+      <a href="https://web.facebook.com/mahikaluu" target="_blank"><img src="facebook.png" alt="Facebook" /></a>
+    </div>
+  </div>
+</div>
+    <div class="section fun-facts">
+      <ul>
+        <li><strong>Height:</strong> 5'1</li>
+        <li><strong>MBTI:</strong> INFP-T</li>
+        <li><strong>Zodiac Sign:</strong> Gemini♊ (not a red flag i swear ><)</li>
+        <li><strong>Blood Type:</strong> O+ (mosquitos love me)</li>
+        <li><strong>Favorite Food:</strong> lots, food is love</li>
+        <li><strong>Least Favorite Food:</strong> 🍍🌶️</li>
+        <li><strong>Hobbies:</strong> A,G,M, brainrotting</li>
+        <li><strong>Special Skill:</strong> Adaptability!</li>
+        <li><strong>Current Obsession:</strong> gacha... and ⁱᵈᵒˡ ᵇᵒʸˢ⁠ugh</li>
+        <li><strong>Music I Always Listen To:</strong> Rock, Metal, Pop</li>
+        <li><strong>Idol I Admire:</strong> Mingi 🐥, also Rei from Enstar (game 😞)</li>
+        <li><strong>My Dream:</strong> WORLD DOMINATION AND BE RICH💸</li>
+        <li><strong>Message to the Fans:</strong> Hi, hello, let's be friends idk 🪠</li>
+      </ul>
+    </div>
+
+    <div class="section choice-menu">
+      <h3>Choose your fate:</h3>
+      <ul>
+        <li>🎤 Ask Luu to freestyle rap</li>
+        <li>❗ ❓❓❓❓❓❓❓❓❓</li>
+        <li>🎮 Challenge Luu to a gaming duel</li>
+        <li>💌 Send Luu a fan letter</li>
+      </ul>
+    </div>
+
+    <a href="home.html" class="return-button">Return to Coven Main Halls</a>
+  </div>
 </body>
 </html>
