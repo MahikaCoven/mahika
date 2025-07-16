@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="m.ico" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mahika</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
 
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       padding: 0;
@@ -22,8 +21,6 @@
       overflow: hidden;
       cursor: none;
     }
-
-    /* Background Image */
     .background {
       position: fixed;
       inset: 0;
@@ -31,16 +28,12 @@
       background-size: cover;
       z-index: 0;
     }
-
-    /* Overlay darkness */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.7);
       z-index: 1;
     }
-
-    /* Content Container */
     .container {
       position: relative;
       z-index: 2;
@@ -66,8 +59,6 @@
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
-
-    /* Mahika Title */
     .title {
       font-size: 5rem;
       opacity: 0;
@@ -80,15 +71,11 @@
       50% { opacity: 1; text-shadow: 0 0 20px #fff, 0 0 40px #e8e8e8; }
       100% { opacity: 1; text-shadow: none; }
     }
-
-    /* Subtitle - Baybayin */
     .subtitle {
       font-size: 1.5rem;
       margin-top: 10px;
       color: #ccc;
     }
-
-    /* Typing effect container */
     .tagline {
       font-size: 1.1rem;
       color: white;
