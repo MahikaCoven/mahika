@@ -184,14 +184,11 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="custom-cursor" id="cursor"></div>
 
-  <!-- Background Layers -->
   <div class="background"></div>
   <div class="overlay"></div>
 
-  <!-- Main Content -->
   <div class="container">
     <img src="logo.png" alt="Mahika Logo" class="logo" />
     <div class="title">MahikA</div>
@@ -200,7 +197,6 @@
     <button class="enter-button" onclick="fadeAndGo()">Enter the Magic</button>
   </div>
 
-  <!-- Fade Transition -->
   <div id="fade" class="fade-out"></div>
 
   <script>
@@ -216,8 +212,6 @@
         container.appendChild(span);
       });
     }
-
-    // Start typing after glow
     setTimeout(() => {
       typeWithGlow(tagline, 50);
     }, 2500);
@@ -229,8 +223,6 @@
         window.location.href = 'home.html';
       }, 1000);
     }
-
-    // Custom Cursor + Mist Trail
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.pageX + 'px';

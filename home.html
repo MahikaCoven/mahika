@@ -7,6 +7,88 @@
   <title>Mahika | The Coven</title>
   <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet" />
   <style>
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+
+  .members-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .member-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flip-card {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .flip-card-front img,
+  .flip-card-back img {
+    object-fit: contain;
+  }
+
+  .spell-section {
+    margin: 30px 10px;
+  }
+
+  .image-btn img {
+    width: 120px;
+  }
+
+  .spell-output {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  nav a {
+    display: block;
+    margin: 12px 0;
+    font-size: 1rem;
+  }
+
+  .danglings {
+    gap: 20px;
+  }
+
+  .dangle {
+    width: 40px;
+  }
+
+  .portal-img {
+    width: 60px;
+  }
+
+  .candle-container {
+    gap: 100px;
+  }
+
+  .candle {
+    width: 40px;
+  }
+
+  .side-border {
+    display: none;
+  }
+}
+
+    .title {
+      font-size: 5rem;
+      opacity: 0;
+      animation: fadeGlow 2.5s ease-in-out forwards;
+      color: white;
+
+    }@keyframes fadeGlow {
+      0% { opacity: 0; }
+      50% { opacity: 1; text-shadow: 0 0 20px #fff, 0 0 40px #e8e8e8; }
+      100% { opacity: 1; text-shadow: none; }
+    }
+    
     .spell-section {
       text-align: center;
       margin: 50px 20px;
@@ -50,7 +132,6 @@
       color: white;
       font-family: 'Manufacturing Consent', sans-serif;
       overflow-x: hidden;
-      cursor: none;
     }
 
     img {
@@ -61,13 +142,11 @@
     
 
     .banner {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      z-index: 1;
-      position: relative;
-    }
-
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
     .danglings {
       display: flex;
       justify-content: center;
@@ -110,7 +189,77 @@
       0% { transform: translateY(0px) rotate(0deg); }
       100% { transform: translateY(-20px) rotate(10deg); }
     }
+    .candle-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  gap: 500px;
+  padding-bottom: 10px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.candle {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 0 8px #fff2);
+  transition: opacity 0.6s ease;
+}
+  .flicker-reveal {
+  opacity: 0;
+  animation: revealThenGlow 4s ease-out forwards;
+  animation-delay: 0.5s;
+}
+@keyframes revealThenGlow {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.95);
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    text-shadow: 0 0 10px #aabfff, 0 0 20px #aabfff;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 15px #aabfff, 0 0 30px #aabfff;
+  }
+}
 
+
+.glow-loop {
+  animation: softGlow 3s ease-in-out infinite;
+}
+
+@keyframes softGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px #aabfff, 0 0 30px #aabfff;
+  }
+  50% {
+    text-shadow: 0 0 5px #8888ff, 0 0 10px #8888ff;
+  }
+}
+.close-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
     .members-section {
       padding: 50px 20px;
       text-align: center;
@@ -168,50 +317,96 @@
       transform: rotateY(180deg);
     }
 
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
+    .flip-card {
+  width: 200px;
+  height: 280px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #444;
+  box-sizing: border-box;
+}
+
+.flip-card-front {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.flip-card-front img,
+.flip-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.flip-card-back.yuru-back {
+  background-image: url('backyuru.png');
+}
+.flip-card-back.ish-back {
+  background-image: url('backish.png');
+}
+.flip-card-back.luu-back {
+  background-image: url('backluu.png');
+}
+
+.flip-card-back p {
+  background: rgba(0,0,0,0.6);
+  padding: 6px 12px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+}
+
+    .flip-card-inner {
       width: 100%;
       height: 100%;
-      border-radius: 12px;
-      backface-visibility: hidden;
-      border: 1px solid #444;
-      backdrop-filter: blur(5px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
     }
 
-    .flip-card-front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .flip-card {
+      width: 200px; 
+      height: 280px;
+      perspective: 1000px;
     }
 
-    .flip-card-back {
+    .flip-card:hover .flip-card-inner {
       transform: rotateY(180deg);
-      color: white;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .yuru-back { background-image: url('backyuru.png'); }
-    .ish-back { background-image: url('backish.png'); }
-    .luu-back { background-image: url('backluu.png'); }
-
-    .flip-card-back p {
-      background: rgba(0,0,0,0.6);
-      padding: 6px 12px;
-      border-radius: 8px;
-    }
-
-    .flip-card a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      text-decoration: none;
-      color: inherit;
     }
 
     .burning {
@@ -254,23 +449,24 @@
     }
 
     .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.95);
-      padding: 20px 30px;
-      border: 1px solid #666;
-      border-radius: 12px;
-      z-index: 999;
-      box-shadow: 0 0 15px #6440ff;
-      animation: floatIn 0.4s ease;
-    }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #aabfff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 10000;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
-    .popup.hidden {
-      display: none;
-    }
-
+.popup.hidden {
+  opacity: 0;
+  transform: translate(-50%, -40%) scale(0.95);
+  pointer-events: none;
+}
     .popup-content {
       display: flex;
       flex-direction: column;
@@ -288,7 +484,6 @@
       text-shadow: 0 0 6px #fff;
     }
 
-    /* ✅ Portal fixed bottom middle */
     .portal-img {
   width: 80px;
   height: auto;
@@ -333,7 +528,6 @@
     <img src="m.png" class="dangle" alt="rune">
   </div>
 
-   <!-- ✨ Floating pentagrams -->
   <img src="star.png" class="pentagram p1" alt="">
   <img src="star.png" class="pentagram p2" alt="">
   <img src="star.png" class="pentagram p3" alt="">
@@ -341,23 +535,23 @@
   <img src="star.png" class="pentagram p5" alt="">
 
   <section class="members-section">
-    <h2>Meet the Witches</h2>
+    <h2 id="magic-title" class="flicker-title">Meet the Witches</h2>
     <div class="member-cards">
       <div class="flip-card" onclick="handleCardClick('yuru.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><img src="yuru.png" alt="Yuru"></div>
+          <div class="flip-card-front"><img src="yuruv2.png" alt="Yuru"></div>
           <div class="flip-card-back yuru-back"><p>The Seer</p></div>
         </div>
       </div>
       <div class="flip-card" onclick="handleCardClick('ish.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><img src="ish.png" alt="Ish"></div>
+          <div class="flip-card-front"><img src="ishv2.png" alt="Ish"></div>
           <div class="flip-card-back ish-back"><p>The Weaver</p></div>
         </div>
       </div>
       <div class="flip-card" onclick="handleCardClick('luu.html', this)">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><img src="luu.png" alt="Luu"></div>
+          <div class="flip-card-front"><img src="luuv2.png" alt="Luu"></div>
           <div class="flip-card-back luu-back"><p>The Hollow</p></div>
         </div>
       </div>
@@ -366,7 +560,7 @@
 
   <div class="spell-section">
     <button class="image-btn"><img src="fate.png" alt="Cast a Spell" /></button>
-    <p class="spell-output">🕯️ Touch the crytal ball of fate... 🕯️</p>
+    <p class="spell-output">🔮 Touch the crytal ball of fate... 🔮</p>
   </div>
 
   <nav>
@@ -383,21 +577,25 @@
   </a>
   <p>© 2025 Mahika. The coven never sleeps.</p>
 
-  <img src="vinel.png" alt="Left Border" class="side-border left-border">
-  <img src="viner.png" alt="Right Border" class="side-border right-border">
+  <img src="borderl.png" alt="Left Border" class="side-border left-border">
+  <img src="borderr.png" alt="Right Border" class="side-border right-border">
 </div>
 
 
   <div id="contactPopup" class="popup hidden">
     <div class="popup-content">
+  <button class="close-btn" onclick="hideContact()">✕</button>
       <a href="https://web.facebook.com/profile.php?id=61577207842173" target="_blank" class="fb-link">Facebook</a>
       <a href="https://www.tiktok.com/@mahika25th" target="_blank" class="fb-link">TikTok</a>
       <a href="https://www.instagram.com/mahika.2025th" target="_blank" class="fb-link">Instagram</a>
     </div>
   </div>
-
+<div class="candle-container">
+  <img src="candle.gif" class="candle left" alt="Candle" />
+  <img src="candle.gif" class="candle right" alt="Candle" />
+</div>
   <script>
-    // Redirect to index.html on refresh
+   
 if (performance.navigation.type === 1) {
   window.location.href = "index.html";
 }
@@ -417,7 +615,7 @@ if (performance.navigation.type === 1) {
 
     document.querySelector('.image-btn').addEventListener('click', () => {
       const randomSpell = spells[Math.floor(Math.random() * spells.length)];
-      document.querySelector('.spell-output').textContent = `✨ ${randomSpell} ✨`;
+      document.querySelector('.spell-output').textContent = `🕯️ ${randomSpell} 🕯️`;
     });
 
     function handleCardClick(link, element) {
@@ -428,8 +626,49 @@ if (performance.navigation.type === 1) {
     }
 
     function showContact() {
-      document.getElementById("contactPopup").classList.remove("hidden");
-    }
+  const popup = document.getElementById("contactPopup");
+  popup.classList.toggle("hidden");
+}
+    window.addEventListener('scroll', () => {
+  const candles = document.querySelector('.candle-container');
+  const scrollY = window.scrollY || window.pageYOffset;
+  const scrollHeight = document.documentElement.scrollHeight;
+  const windowHeight = window.innerHeight;
+
+  if (scrollY + windowHeight >= scrollHeight - 20) {
+    candles.style.opacity = 1;
+  } else {
+    candles.style.opacity = 0;
+  }
+});
+
+function showContact() {
+  const popup = document.getElementById("contactPopup");
+  popup.style.display = "block";
+  void popup.offsetWidth;
+  popup.classList.remove("hidden");
+}
+
+function hideContact() {
+  const popup = document.getElementById("contactPopup");
+  popup.classList.add("hidden");
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 400);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const title = document.getElementById("magic-title");
+  if (!sessionStorage.getItem("seenTitle")) {
+    title.classList.add("flicker-reveal");
+    setTimeout(() => {
+      title.classList.add("glow-loop");
+    }, 4000);
+    sessionStorage.setItem("seenTitle", true);
+  } else {
+    title.style.opacity = 1;
+    title.classList.add("glow-loop");
+  }
+});
   </script>
 </body>
 </html>
