@@ -60,7 +60,7 @@ This project is entirely fan-powered by one unstoppable multitalented chaos witc
 
 **Luu**  
 Designer • Coder • Producer • Vocalist • Choreographer • Sorcerer Supreme  
-Follow the spell trail 💫 [https://web.facebook.com/profile.php?id=61577207842173]
+Follow the spell trail 💫 [https://web.facebook.com/mahikacoven]
 
 ---
 (To my group: DO NOT TOUCH UNLESS YOU WANT TO CRY CSS WITH ME)
